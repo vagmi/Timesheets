@@ -1,0 +1,13 @@
+Timesheets::Application.routes.draw do
+  get "project/index"
+
+  get "project/create"
+
+  get "project/destroy"
+
+  get "project/update"
+
+  devise_for :users
+
+  root :to=>"home#index"
+end

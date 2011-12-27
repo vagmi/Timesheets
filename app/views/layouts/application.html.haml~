@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title Timesheets
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .topbar
+      .topbar-inner
+        .container
+          %a.brand(href="/") Timesheets
+          %ul.nav
+            %li.active
+              %a(href="#") Home
+    .container
+      .notice= notice
+      .alert= alert
+      =yield
