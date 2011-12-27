@@ -12,7 +12,9 @@
           %a.brand(href="/") Timesheets
           %ul.nav
             %li.active
-              %a(href="#") Home
+              %a(href="/") Home
+            %li
+              %a{:href => "/projects"} Projects
     .container#content
       .notice= notice
       .alert= alert

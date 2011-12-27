@@ -1,0 +1,38 @@
+%table
+  %tr
+    %td
+      = form_for :project do |f|
+        - if !params[:project].nil?
+          \ Project Name
+          %input#project_projectname.form-text.required.fluid{:name => "project[name]", :size => "20", :type => "text", :value => params[:project][:name]}
+            %br/
+        - else
+          \ Project Name
+          %input#project_projectname.form-text.required.fluid{:name => "project[name]", :size => "20", :type => "text"}
+            %br/
+        %td
+          \ Project Lead
+          %lbl= select :project,:owner_id,@users.collect{|x|[x.email,x.id]}, { :include_blank => "Select.." }, :class => "select-box"
+        %td
+          Project Status
+          %lbl= f.check_box :is_active
+        %td
+          .buttons= submit_tag 'ADD', :class => "form-submit"
+          
+%table
+  %tr
+    %td
+      %b Project Name
+    %td
+      %b Project Lead
+    %td
+      %b Status
+    %td
+      %b Action
+      
+  - @projects.each do |project|
+    %tr
+      %td.proj= project.name
+      %td= project.user.email
+      %td= (project.is_active?) ? "Active" : "Inactive"
+      %td= link_to 'X', project, :confirm => 'Are you sure?', :method => :delete
