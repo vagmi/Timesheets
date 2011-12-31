@@ -2,7 +2,8 @@
 - if current_user
   %p 
     Signed in as #{current_user.email} | 
-    =link_to "Sign out",destroy_user_session_path,:method=>:delete
+    =link_to "Sign out",logout_path,:method=>:delete
 - else 
   %p= link_to "Sign in", new_user_session_path
+  = link_to 'GMail', user_omniauth_authorize_path(:google)
   
