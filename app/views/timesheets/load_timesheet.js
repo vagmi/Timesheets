@@ -1,0 +1,1 @@
+$('#timesheet').html("<%= escape_javascript(render :partial=>'dynamic_timesheet') %>");
