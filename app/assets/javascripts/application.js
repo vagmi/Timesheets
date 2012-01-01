@@ -6,4 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require swfobject
+//= require date
+//= require jquery.datePicker
 //= require_tree .
