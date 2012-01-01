@@ -1,0 +1,6 @@
+<div align="right"><ul>
+<li class="profile first last active"><b><a href="/project/export_statistics_per_project/<%=project.id%>?start_date=<%=start_date%>&end_date=<%=end_date%>" class="active">Export Hours Log</a><b></li>
+</ul><br></div>
+<% if !start_date.nil? && !end_date.nil? %>
+<%= open_flash_chart_object('100%',400, "/projects/dynamic_graph/#{project.id}?start_date=#{start_date}&end_date=#{end_date}",true).html_safe %>
+<% end %>

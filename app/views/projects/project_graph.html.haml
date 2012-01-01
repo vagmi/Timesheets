@@ -1,0 +1,34 @@
+:javascript
+  function dateCalc(projectId){
+    start=$('.start_date').val();
+    end=$('.end_date').val();
+   //~ userId=$("sel_user_id").value
+    var date1 = new Date(start);
+    var date2 = new Date(end);
+    if (date1.getFullYear()>date2.getFullYear() ||  ( date1.getFullYear()==date2.getFullYear()  && date1.getMonth()>date2.getMonth()) || ( date1.getFullYear()==date2.getFullYear()  && date1.getMonth()==date2.getMonth() && date1.getDate()>date2.getDate() ) )
+    {
+    document.getElementById("dateInvalid").style.display="inline";
+    }
+    else
+    {
+    document.getElementById("dateInvalid").style.display="none";
+    $.ajax({url : '/projects/project_graph',data: {start_date : start, end_date : end, id : projectId}, type: 'post'});
+    }
+  }
+  
+  Date.format = 'yyyy-mm-dd';
+  $(function() {
+    $( ".datepicker" ).datePicker({startDate:'2010-01-01'});
+  });
+
+%table
+  %tbody
+    %tr
+      %td#bar_chart
+        = render :partial=>'static_chart' ,:locals => {:project => @project, :start_date => @start_date, :end_date => @end_date }
+      = text_field_tag :start_date, @start_date, :class => "start_date datepicker"
+      = text_field_tag :end_date, @end_date, :class => "end_date datepicker"
+      = button_tag 'Submit', :onclick => "dateCalc(#{@project.id})"
+    %tr#dateInvalid{:align => "center", :style => "display:none;margin-left:200px;"}
+      %td{:colspan => "5"}
+        %font{:color => "red"} Start date should be less than End date.

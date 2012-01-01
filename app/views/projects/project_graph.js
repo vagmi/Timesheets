@@ -1,0 +1,1 @@
+$('#bar_chart').html("<%= escape_javascript(render :partial=>'dynamic_chart', :locals => {:project => @project, :start_date => @start_date, :end_date => @end_date}) %>");
