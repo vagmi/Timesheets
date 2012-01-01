@@ -28,6 +28,8 @@
     %td
       %b Status
     %td
+      %b Links
+    %td
       %b Action
       
   - @projects.each do |project|
@@ -35,4 +37,5 @@
       %td.proj= project.name
       %td= project.user.email
       %td= (project.is_active?) ? "Active" : "Inactive"
+      %td= link_to 'Stats', "/projects/project_graph/#{project.id}"
       %td= link_to 'X', project, :confirm => 'Are you sure?', :method => :delete
