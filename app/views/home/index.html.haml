@@ -3,6 +3,16 @@
   %p 
     Signed in as #{current_user.email} | 
     =link_to "Sign out",logout_path,:method=>:delete
+  %h3 Features:
+  %ul
+    %li Sign-in using your Google Apps Account
+    %li Add/remove projects
+    %li Add/remove categories
+    %li View Team members stats for any individual project
+    %li View your overall stats for the month or any period of time by selecting dates
+    %li Add/Edit and Delete Timesheets
+    %li Graphical stats for team members performance for a given project and individuals over all performance
+    
 - else 
   %p= link_to "Sign in", new_user_session_path
   = link_to 'Sign in via Google Apps', user_omniauth_authorize_path(:google)
