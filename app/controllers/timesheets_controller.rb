@@ -1,5 +1,5 @@
 class TimesheetsController < ApplicationController
-  
+  before_filter :require_login
   autocomplete :projects, :name
   
   def index

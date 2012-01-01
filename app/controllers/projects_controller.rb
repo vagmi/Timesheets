@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :require_login
   
   def index
     @users = User.all
