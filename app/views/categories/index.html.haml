@@ -1,0 +1,26 @@
+%table
+  %tr
+    %td
+      = form_for :category do |f|
+        - if !params[:category].nil?
+          \ Category Name
+          %input#project_projectname.form-text.required.fluid{:name => "category[name]", :size => "20", :type => "text", :value => params[:category][:name]}
+            %br/
+        - else
+          \ Category Name
+          %input#project_projectname.form-text.required.fluid{:name => "category[name]", :size => "20", :type => "text"}
+            %br/
+        %td
+          .buttons= submit_tag 'ADD', :class => "form-submit"
+          
+%table
+  %tr
+    %td
+      %b Category Name
+    %td
+      %b Action
+      
+  - @categories.each do |category|
+    %tr
+      %td.proj= category.name
+      %td= link_to 'X', category, :confirm => 'Are you sure?', :method => :delete
