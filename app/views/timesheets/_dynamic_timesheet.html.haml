@@ -15,5 +15,5 @@
       %td= select_tag "timeentry[][category_id]", options_from_collection_for_select(@categories, "id", "name", :selected => time.category_id), {:class => "select-box"}
       %td= text_field_tag "timeentry[][description]", time.description
       %td= text_field_tag "timeentry[][minutes]", time.minutes
-      %td= check_box_tag "timeentry[][billable]"
+      %td= check_box_tag "timeentry[][billable]", 1, time.billable
       %td= link_to 'X', "/timesheets/#{time.id}", :method => :delete, :confirm => "Are you sure?"

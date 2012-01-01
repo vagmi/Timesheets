@@ -45,11 +45,11 @@
         %td
           %input.datepicker#task-date{:type => "text", :value => "#{Date.today}", :name => "task_date", :onchange => "update_timesheets();"}
             %font{:color => "red", :size => "1"}= error_message_on :timeentry,:task_date
-        %td Day Type
+        /%td Day Type
         %td#day_type
         %td
           %input#day_type_input{:name => "day_type", :type => "hidden"}
-        %td Total Hrs
+        /%td Total Hrs
         %td
           %span#total-hrs-label
           %input#total-hrs{:type => "hidden"}
@@ -64,7 +64,7 @@
         %th Category
         %th Description
         %th Hours Taken
-        %th Status
+        %th Billable
         %th Action
       - @timesheets.each do |time|
         %tr
@@ -75,7 +75,7 @@
           %td= select_tag "timeentry[][category_id]", options_from_collection_for_select(@categories, "id", "name", :selected => time.category_id), {:class => "select-box"}
           %td= text_field_tag "timeentry[][description]", time.description
           %td= text_field_tag "timeentry[][minutes]", time.minutes
-          %td= check_box_tag "timeentry[][billable]"
+          %td= check_box_tag "timeentry[][billable]", time.billable, :checked => (time.billable?) ? true : false
           %td= link_to 'X', "/timesheets/#{time.id}", :method => :delete, :confirm => "Are you sure?"
         
   .buttons
