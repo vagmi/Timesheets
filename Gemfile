@@ -13,6 +13,8 @@ gem 'omniauth'
 gem 'omniauth-openid'
 gem 'omniauth-google-apps'
 gem 'mongrel', '1.2.0.pre2'
+gem 'dynamic_form',  :git => 'git://github.com/rails/dynamic_form.git'
+gem 'rails3-jquery-autocomplete'
 
 # Gems used only for assets and not required
 # in production environments by default.
