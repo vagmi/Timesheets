@@ -5,5 +5,5 @@
     =link_to "Sign out",logout_path,:method=>:delete
 - else 
   %p= link_to "Sign in", new_user_session_path
-  = link_to 'GMail', user_omniauth_authorize_path(:google)
+  = link_to 'Sign in via Google Apps', user_omniauth_authorize_path(:google)
   
